@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Shower Presentation Engine</title>
+    <title>Form is Your Friend</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="node_modules/@shower/ribbon/styles/styles.css">
@@ -9,27 +9,362 @@
         .shower {
             --slide-ratio: calc(16 / 9);
         }
+
+        input, button {
+            font-size: inherit;
+        }
+        button {
+            cursor: pointer;
+        }
+
+        .subtitle {
+            text-align: center;
+        }
+
+        .required span {
+            display: block;
+        }
+        .required span::after {
+            content: '*';
+            color: tomato;
+        }
+        .error-message {
+            color: tomato;
+            display: none;
+            font-size: 1rem;
+            position: absolute;
+        }
+        .validate input:invalid:not(:placeholder-shown) {
+            border-color: tomato;
+            outline-color: tomato;
+        }
+        .validate input:invalid:not(:placeholder-shown) + .error-message {
+            display: block;
+        }
+
+        .toast {
+            animation: toast 0.3s ease-in-out forwards;
+            background-color: #4b86c2;
+            border-radius: 5px;
+            color: #ffffff;
+            left: 50%;
+            line-height: 1;
+            padding: 0.5rem 1rem;
+            position: fixed;
+            top: -70px;
+            transform: translateX(-50%);
+            z-index: 99;
+        }
+        @keyframes toast {
+            100% {
+                top: 20px
+            }
+        }
+
+         #end img {
+             display: block;
+             margin-inline: auto;
+             width: 30%;
+         }
     </style>
 </head>
 <body class="shower list">
 
     <header class="caption">
-        <h1>Shower Presentation Engine</h1>
-        <p>Yours Truly, Famous Inc.</p>
+        <h1>Form is Your Friend</h1>
+        <p>Vladyslav Chychuzhko</p>
     </header>
 
     <section class="slide">
-        <!-- Create your first slide -->
+        <blockquote><h2 class="shout">Form is Your Friend</h2></blockquote>
     </section>
 
-    <footer class="badge">
-        <a href="https://github.com/shower/shower">Fork me on GitHub</a>
-    </footer>
+    <section class="slide">
+        <h2 class="shout">Prologue</h2>
+    </section>
+
+    <section class="slide">
+        <h2>Situation</h2>
+        <form>
+            <input type="email" name="email" placeholder="j.doe@mail.com" autocomplete="off" aria-label="Email">
+            <button type="submit">Subscribe</button>
+        </form>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout">It reacts to Enter</h2>
+    </section>
+
+    <section class="slide">
+        <div class="columns two">
+            <div>
+                <h2>div</h2>
+                <div>
+                    <input type="email" name="email" value="j.doe@mail.com" autocomplete="off" aria-label="Email">
+                    <button class="submit">Subscribe</button>
+                </div>
+            </div>
+            <div>
+                <h2>form</h2>
+                <form>
+                    <input type="email" name="email" value="j.doe@mail.com" autocomplete="off" aria-label="Email">
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Why not &lt;div&gt;?</h2>
+        <ol>
+            <li><strong>submit</strong> event</li>
+            <li>Easy <a href="https://developer.mozilla.org/en-US/docs/Web/API/FormData" target="_blank">FormData</a> flow</li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/forms" target="_blank">document.forms</a> mapping</li>
+            <li>Built-in form validation <span class="next">(if needed)</span></li>
+        </ol>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout">How to handle validation?</h2>
+    </section>
+
+    <section class="slide">
+        <h2>
+            Attribute
+            <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#novalidate" target="_blank">novalidate</a>
+        </h2>
+        <pre>
+            <code>&lt;form <mark>novalidate</mark>&gt;</code>
+            <code>    ...</code>
+            <code>&lt;/form&gt;</code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <h2>Demo</h2>
+        <form name="novalidate-demo">
+            <label>
+                <input type="email" name="email" value="j.doe" autocomplete="off" aria-label="Email">
+            </label>
+            <button type="submit">Subscribe</button>
+        </form>
+        <label>
+            <input type="checkbox" name="novalidate">
+            <span>Enable `novalidate` attribute</span>
+        </label>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout">Button outside?</h2>
+    </section>
+
+    <section class="slide">
+        <h2>
+            Attribute
+            <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#form" target="_blank">form</a>
+        </h2>
+        <pre>
+            <code>&lt;form <mark>id="my-form"</mark>&gt;</code>
+            <code>    ...</code>
+            <code>&lt;/form&gt;</code>
+            <code>&lt;button <mark>form="my-form"</mark>&gt;Submit&lt;/button&gt;</code>
+        </pre>
+        <blockquote class="note">It's not required to use type="submit"</blockquote>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout">Input with no label?</h2>
+    </section>
+
+    <section class="slide">
+        <h2>Label</h2>
+        <pre>
+            <code>&lt;form&gt;</code>
+            <code>    &lt;label for="<mark>email</mark>"&gt;Email&lt;/label&gt;</code>
+            <code>    &lt;input id="<mark>email</mark>"&gt;</code>
+            <code>    ...</code>
+            <code>&lt;/form&gt;</code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <h2>Also label</h2>
+        <pre>
+            <code>&lt;form&gt;</code>
+            <code>    &lt;label&gt;</code>
+            <code class="mark">        &lt;span&gt;Email&lt;/span&gt;</code>
+            <code>        &lt;input&gt;</code>
+            <code>    &lt;/label&gt;</code>
+            <code>    ...</code>
+            <code>&lt;/form&gt;</code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <h2>Invisible label</h2>
+        <pre>
+            <code>&lt;form&gt;</code>
+            <code>    &lt;input <mark>aria-label="Email"</mark>&gt;</code>
+            <code>    ...</code>
+            <code>&lt;/form&gt;</code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout">Let's add colors</h2>
+    </section>
+
+    <section class="slide">
+        <h2>Rules</h2>
+        <ul>
+            <li>required</li>
+            <li>min/max</li>
+            <li>minlength/maxlength</li>
+            <li>pattern</li>
+        </ul>
+        <div class="spotlight next" style="
+            --spotlight-radius: 0;
+            --spotlight-opacity: 40%;
+            --spotlight-width: 1024px;
+            --spotlight-height: 50px;
+            --spotlight-top: 55px;
+        "></div>
+    </section>
+
+    <section class="slide">
+        <h2>Demo</h2>
+        <form>
+            <label class="required">
+                <span>Zip-code</span>
+                <input type="text" name="cvv" autocomplete="off" pattern="\d{2}-\d{3}" required>
+            </label>
+            <button type="submit">Submit</button>
+        </form>
+        <br>
+        <pre>
+            <code>&lt;input <mark>pattern="\d{2}-\d{3}"</mark>&gt;</code>
+        </pre>
+        <blockquote class="note"><a href="https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation#implementing_a_customized_error_message" target="_blank">Specify a custom message</a> </blockquote>
+    </section>
+
+    <section class="slide">
+        <h2>:valid/:invalid</h2>
+        <pre>
+            <code>input<mark>:invalid</mark> + .error-message {</code>
+            <code>    opacity: 1;</code>
+            <code>}</code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <h2>Demo</h2>
+        <form class="validate">
+            <label class="required">
+                <span>Zip-code:</span>
+                <input type="text" name="cvv" autocomplete="off" pattern="\d{2}-\d{3}" required>
+                <i class="error-message">Please, enter a valid zip-code code</i>
+            </label>
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+
+    <section class="slide">
+        <h2>Placeholder trick</h2>
+        <pre>
+            <code>input:invalid<mark>:not(:placeholder-shown)</mark> + .error-message {</code>
+            <code>    opacity: 1;</code>
+            <code>}</code>
+        </pre>
+        <blockquote class="note">There are <a href="https://caniuse.com/mdn-css_selectors_user-valid" target="_blank">:user-valid</a>/<a href="https://caniuse.com/mdn-css_selectors_user-invalid" target="_blank">:user-invalid</a> rules that fix this.<br>But they are not production ready.</blockquote>
+    </section>
+
+    <section class="slide">
+        <h2>Demo</h2>
+        <form class="validate">
+            <label class="required">
+                <span>Zip-code:</span>
+                <input type="text" name="cvv" placeholder="__-___" autocomplete="off" pattern="\d{2}-\d{3}" required>
+                <i class="error-message">Please, enter a valid zip-code code</i>
+            </label>
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout">What's this all about?</h2>
+    </section>
+
+
+    <section class="slide">
+        <h2>User experience is in Your hands</h2>
+        <ul>
+            <li>This is an official and recommended way</li>
+            <li>Not only people with disabilities, but also senior people</li>
+            <li>SEO and AI tools</li>
+            <li>Accessibility laws and regulations</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Summary</h2>
+        <ol>
+            <li>Use <strong>&lt;form&gt;</strong> when possible</li>
+            <li>Follow accessibility and semantic rules</li>
+            <li>Check libraries in your projects</li>
+            <li>Do not be afraid to override default styles</li>
+            <li>Validate everything</li>
+            <li>Check your form with keyboard</li>
+        </ol>
+    </section>
+
+    <section class="slide" id="end">
+        <h2>Thank you!</h2>
+        <img src="pictures/repo.png" alt="Github Repository">
+        <p class="subtitle">@vchychuzhko</p>
+    </section>
 
     <div class="progress"></div>
 
     <script src="node_modules/@shower/core/dist/shower.js"></script>
     <!-- Copyright © 2024 Yours Truly, Famous Inc. -->
 
+    <script>
+        const forms = document.querySelectorAll('form');
+        const buttons = document.querySelectorAll('.submit');
+
+        const showMessage = (message) => {
+            const toast = document.createElement('div');
+
+            toast.classList.add('toast');
+            toast.textContent = message;
+
+            document.body.appendChild(toast);
+
+            setTimeout(() => {
+                document.body.removeChild(toast)
+            }, 3000);
+        }
+
+        forms.forEach((form) => {
+            form.addEventListener('submit', (event) => {
+                event.preventDefault();
+
+                showMessage('Sent!');
+            })
+        });
+        buttons.forEach((button) => {
+            button.addEventListener('click', () => {
+                showMessage('Sent!');
+            })
+        });
+
+        // ---
+
+        const novalidateTrigger = document.querySelector('[name="novalidate"]');
+
+        novalidateTrigger.addEventListener('change', (event) => {
+            document.forms['novalidate-demo'].noValidate = event.target.checked;
+        });
+    </script>
 </body>
 </html>
