@@ -21,7 +21,7 @@
             text-align: center;
         }
 
-        .required span {
+        form label span {
             display: block;
         }
         .required span::after {
@@ -61,11 +61,11 @@
             }
         }
 
-         #end img {
-             display: block;
-             margin-inline: auto;
-             width: 30%;
-         }
+        #final img {
+            display: block;
+            margin-inline: auto;
+            width: 256px;
+        }
     </style>
 </head>
 <body class="shower list">
@@ -84,7 +84,7 @@
     </section>
 
     <section class="slide">
-        <h2>Situation</h2>
+        <h2>Demo</h2>
         <form>
             <input type="email" name="email" placeholder="j.doe@mail.com" autocomplete="off" aria-label="Email">
             <button type="submit">Subscribe</button>
@@ -92,7 +92,7 @@
     </section>
 
     <section class="slide">
-        <h2 class="shout">It reacts to Enter</h2>
+        <h2 class="shout">Enter</h2>
     </section>
 
     <section class="slide">
@@ -125,7 +125,7 @@
     </section>
 
     <section class="slide">
-        <h2 class="shout">How to handle validation?</h2>
+        <h2 class="shout">Disable validation</h2>
     </section>
 
     <section class="slide">
@@ -142,20 +142,27 @@
 
     <section class="slide">
         <h2>Demo</h2>
-        <form name="novalidate-demo">
-            <label>
-                <input type="email" name="email" value="j.doe" autocomplete="off" aria-label="Email">
-            </label>
+        <form name="novalidate-form">
+            <input type="email" name="email" value="j.doe" autocomplete="off" aria-label="Email">
             <button type="submit">Subscribe</button>
         </form>
         <label>
-            <input type="checkbox" name="novalidate">
+            <input type="checkbox" name="novalidate" data-novalidate-trigger="novalidate-form">
             <span>Enable `novalidate` attribute</span>
         </label>
     </section>
 
     <section class="slide">
-        <h2 class="shout">Button outside?</h2>
+        <h2 class="shout">Have your button outside</h2>
+    </section>
+
+    <section class="slide">
+        <h2>Remote submit</h2>
+        <pre>
+            <code>button.addEventListener('click', () => {</code>
+            <code class="mark">    form.requestSubmit();</code>
+            <code>});</code>
+        </pre>
     </section>
 
     <section class="slide">
@@ -164,63 +171,57 @@
             <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#form" target="_blank">form</a>
         </h2>
         <pre>
-            <code>&lt;form <mark>id="my-form"</mark>&gt;</code>
-            <code>    ...</code>
-            <code>&lt;/form&gt;</code>
-            <code>&lt;button <mark>form="my-form"</mark>&gt;Submit&lt;/button&gt;</code>
+            <code>&lt;form id="<mark>my-form</mark>"&gt;&lt;/form&gt;</code>
+            <code>&lt;button form="<mark>my-form</mark>"&gt;Submit&lt;/button&gt;</code>
         </pre>
         <blockquote class="note">It's not required to use type="submit"</blockquote>
     </section>
 
     <section class="slide">
-        <h2 class="shout">Input with no label?</h2>
+        <h2 class="shout">Have input with no label</h2>
     </section>
 
     <section class="slide">
         <h2>Label</h2>
         <pre>
-            <code>&lt;form&gt;</code>
-            <code>    &lt;label for="<mark>email</mark>"&gt;Email&lt;/label&gt;</code>
-            <code>    &lt;input id="<mark>email</mark>"&gt;</code>
-            <code>    ...</code>
-            <code>&lt;/form&gt;</code>
+            <code>&lt;label for="<mark>email</mark>"&gt;Email&lt;/label&gt;</code>
+            <code>&lt;input id="<mark>email</mark>"&gt;</code>
         </pre>
     </section>
 
     <section class="slide">
-        <h2>Also label</h2>
+        <h2>Label</h2>
         <pre>
-            <code>&lt;form&gt;</code>
-            <code>    &lt;label&gt;</code>
-            <code class="mark">        &lt;span&gt;Email&lt;/span&gt;</code>
-            <code>        &lt;input&gt;</code>
-            <code>    &lt;/label&gt;</code>
-            <code>    ...</code>
-            <code>&lt;/form&gt;</code>
+            <code>&lt;label&gt;</code>
+            <code class="mark">    &lt;span&gt;Email&lt;/span&gt;</code>
+            <code>    &lt;input&gt;</code>
+            <code>&lt;/label&gt;</code>
         </pre>
     </section>
 
     <section class="slide">
         <h2>Invisible label</h2>
         <pre>
-            <code>&lt;form&gt;</code>
-            <code>    &lt;input <mark>aria-label="Email"</mark>&gt;</code>
-            <code>    ...</code>
-            <code>&lt;/form&gt;</code>
+            <code>&lt;input <mark>aria-label="Email"</mark>&gt;</code>
         </pre>
+        <blockquote class="note">
+            Read more about
+            <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA" target="_blank">ARIA</a>
+        </blockquote>
     </section>
 
     <section class="slide">
-        <h2 class="shout">Let's add colors</h2>
+        <h2 class="shout">What to do with validation</h2>
     </section>
 
     <section class="slide">
-        <h2>Rules</h2>
+        <h2>Validation attributes</h2>
         <ul>
             <li>required</li>
             <li>min/max</li>
             <li>minlength/maxlength</li>
             <li>pattern</li>
+            <li>type</li>
         </ul>
         <div class="spotlight next" style="
             --spotlight-radius: 0;
@@ -244,14 +245,16 @@
         <pre>
             <code>&lt;input <mark>pattern="\d{2}-\d{3}"</mark>&gt;</code>
         </pre>
-        <blockquote class="note"><a href="https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation#implementing_a_customized_error_message" target="_blank">Specify a custom message</a> </blockquote>
+        <blockquote class="note">
+            <a href="https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation#implementing_a_customized_error_message" target="_blank">Specify a custom message</a>
+        </blockquote>
     </section>
 
     <section class="slide">
         <h2>:valid/:invalid</h2>
         <pre>
             <code>input<mark>:invalid</mark> + .error-message {</code>
-            <code>    opacity: 1;</code>
+            <code>    display: block;</code>
             <code>}</code>
         </pre>
     </section>
@@ -260,7 +263,7 @@
         <h2>Demo</h2>
         <form class="validate">
             <label class="required">
-                <span>Zip-code:</span>
+                <span>Zip-code</span>
                 <input type="text" name="cvv" autocomplete="off" pattern="\d{2}-\d{3}" required>
                 <i class="error-message">Please, enter a valid zip-code code</i>
             </label>
@@ -272,22 +275,36 @@
         <h2>Placeholder trick</h2>
         <pre>
             <code>input:invalid<mark>:not(:placeholder-shown)</mark> + .error-message {</code>
-            <code>    opacity: 1;</code>
+            <code>    display: block;</code>
             <code>}</code>
         </pre>
-        <blockquote class="note">There are <a href="https://caniuse.com/mdn-css_selectors_user-valid" target="_blank">:user-valid</a>/<a href="https://caniuse.com/mdn-css_selectors_user-invalid" target="_blank">:user-invalid</a> rules that fix this.<br>But they are not production ready.</blockquote>
+        <blockquote class="note">
+            There are
+            <a href="https://caniuse.com/mdn-css_selectors_user-valid" target="_blank">:user-valid</a>/<a href="https://caniuse.com/mdn-css_selectors_user-invalid" target="_blank">:user-invalid</a>
+            rules that fix this.<br>But they are not production ready.
+        </blockquote>
     </section>
 
     <section class="slide">
         <h2>Demo</h2>
-        <form class="validate">
+        <form class="validate" name="validation-form">
             <label class="required">
-                <span>Zip-code:</span>
+                <span>Zip-code</span>
                 <input type="text" name="cvv" placeholder="__-___" autocomplete="off" pattern="\d{2}-\d{3}" required>
                 <i class="error-message">Please, enter a valid zip-code code</i>
             </label>
             <button type="submit">Submit</button>
         </form>
+        <br>
+        <label>
+            <input type="checkbox" name="novalidate" data-novalidate-trigger="validation-form">
+            <span>Enable `novalidate` attribute</span>
+        </label>
+        <br>
+        <label>
+            <input type="checkbox" name="novalidate" data-validation-trigger="validation-form" checked>
+            <span>Enable `:invalid` styling</span>
+        </label>
     </section>
 
     <section class="slide">
@@ -317,9 +334,9 @@
         </ol>
     </section>
 
-    <section class="slide" id="end">
+    <section class="slide" id="final">
         <h2>Thank you!</h2>
-        <img src="pictures/repo.png" alt="Github Repository">
+        <img src="pictures/repo.png" alt="GitHub Repository" width="256">
         <p class="subtitle">@vchychuzhko</p>
     </section>
 
@@ -360,10 +377,25 @@
 
         // ---
 
-        const novalidateTrigger = document.querySelector('[name="novalidate"]');
+        const novalidateTriggers = document.querySelectorAll('[data-novalidate-trigger]');
 
-        novalidateTrigger.addEventListener('change', (event) => {
-            document.forms['novalidate-demo'].noValidate = event.target.checked;
+        novalidateTriggers.forEach((novalidateTrigger) => {
+            novalidateTrigger.addEventListener('change', (event) => {
+                const formName = event.target.dataset.novalidateTrigger;
+
+                document.forms[formName].noValidate = event.target.checked;
+            });
+        });
+
+        const validationTriggers = document.querySelectorAll('[data-validation-trigger]');
+
+        validationTriggers.forEach((validationTrigger) => {
+            validationTrigger.addEventListener('change', (event) => {
+                const formName = event.target.dataset.validationTrigger;
+                const form = document.forms[formName];
+
+                form.classList.toggle('validate', event.target.checked);
+            });
         });
     </script>
 </body>
