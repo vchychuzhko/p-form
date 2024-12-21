@@ -61,7 +61,7 @@
             }
         }
 
-        #final img {
+        .slide img {
             display: block;
             margin-inline: auto;
             width: 256px;
@@ -80,7 +80,9 @@
     </section>
 
     <section class="slide">
-        <h2 class="shout">Prologue</h2>
+        <h2>Join slides</h2>
+        <img src="pictures/repo.png" alt="GitHub Repository" width="256">
+        <p class="subtitle"><a href="https://vchychuzhko.github.io/p-form" target="_blank">vchychuzhko.github.io/p-form</a></p>
     </section>
 
     <section class="slide">
@@ -115,17 +117,7 @@
     </section>
 
     <section class="slide">
-        <h2>Why not &lt;div&gt;?</h2>
-        <ol>
-            <li><strong>submit</strong> event</li>
-            <li>Easy <a href="https://developer.mozilla.org/en-US/docs/Web/API/FormData" target="_blank">FormData</a> flow</li>
-            <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/forms" target="_blank">document.forms</a> mapping</li>
-            <li>Built-in form validation <span class="next">(if needed)</span></li>
-        </ol>
-    </section>
-
-    <section class="slide">
-        <h2 class="shout">Disable validation</h2>
+        <h2 class="shout">Disable<br>validation</h2>
     </section>
 
     <section class="slide">
@@ -153,82 +145,78 @@
     </section>
 
     <section class="slide">
-        <h2 class="shout">Have your button outside</h2>
+        <h2>Why not &lt;div&gt;?</h2>
+        <ol>
+            <li><strong>submit</strong> event</li>
+            <li>Easy <a href="https://developer.mozilla.org/en-US/docs/Web/API/FormData" target="_blank">FormData</a> flow</li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/forms" target="_blank">document.forms</a> mapping</li>
+            <li>Built-in form validation</li>
+        </ol>
     </section>
 
     <section class="slide">
-        <h2>Remote submit</h2>
-        <pre>
-            <code>button.addEventListener('click', () => {</code>
-            <code class="mark">    form.requestSubmit();</code>
-            <code>});</code>
-        </pre>
+        <h2>Why not &lt;div&gt;? - in real life</h2>
+        <ol>
+            <li><strong>submit</strong> event</li>
+            <li><s>Easy <a href="https://developer.mozilla.org/en-US/docs/Web/API/FormData" target="_blank">FormData</a> flow</s></li>
+            <li><s><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/forms" target="_blank">document.forms</a> mapping</s></li>
+            <li><s>Built-in form validation</s></li>
+        </ol>
     </section>
 
     <section class="slide">
-        <h2>
-            Attribute
-            <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#form" target="_blank">form</a>
-        </h2>
-        <pre>
-            <code>&lt;form id="<mark>my-form</mark>"&gt;&lt;/form&gt;</code>
-            <code>&lt;button form="<mark>my-form</mark>"&gt;Submit&lt;/button&gt;</code>
-        </pre>
-        <blockquote class="note">It's not required to use type="submit"</blockquote>
-    </section>
-
-    <section class="slide">
-        <h2 class="shout">Have input with no label</h2>
-    </section>
-
-    <section class="slide">
-        <h2>Label</h2>
-        <pre>
-            <code>&lt;label for="<mark>email</mark>"&gt;Email&lt;/label&gt;</code>
-            <code>&lt;input id="<mark>email</mark>"&gt;</code>
-        </pre>
-    </section>
-
-    <section class="slide">
-        <h2>Label</h2>
-        <pre>
-            <code>&lt;label&gt;</code>
-            <code class="mark">    &lt;span&gt;Email&lt;/span&gt;</code>
-            <code>    &lt;input&gt;</code>
-            <code>&lt;/label&gt;</code>
-        </pre>
-    </section>
-
-    <section class="slide">
-        <h2>Invisible label</h2>
-        <pre>
-            <code>&lt;input <mark>aria-label="Email"</mark>&gt;</code>
-        </pre>
-        <blockquote class="note">
-            Read more about
-            <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA" target="_blank">ARIA</a>
-        </blockquote>
-    </section>
-
-    <section class="slide">
-        <h2 class="shout">What to do with validation</h2>
+        <h2 class="shout">Remove the validation?</h2>
     </section>
 
     <section class="slide">
         <h2>Validation attributes</h2>
         <ul>
+            <li>type</li>
             <li>required</li>
             <li>min/max</li>
             <li>minlength/maxlength</li>
             <li>pattern</li>
-            <li>type</li>
         </ul>
         <div class="spotlight next" style="
             --spotlight-radius: 0;
             --spotlight-opacity: 40%;
             --spotlight-width: 1024px;
             --spotlight-height: 50px;
-            --spotlight-top: 55px;
+            --spotlight-top: -95px;
+        "></div>
+    </section>
+
+    <section class="slide">
+        <h2>Demo</h2>
+        <form name="type-form">
+            <input type="email" name="email" value="j.doe" autocomplete="off" aria-label="Email">
+            <button type="submit">Subscribe</button>
+        </form>
+        <label>
+            <input type="checkbox" name="type" data-type-trigger="type-form" checked>
+            <span>Use "email" type</span>
+        </label>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout">Get use of validation</h2>
+    </section>
+
+    <section class="slide">
+        <h2>Validation attributes</h2>
+        <ul>
+            <li>type</li>
+            <li>required</li>
+            <li>min/max</li>
+            <li>minlength/maxlength</li>
+            <li>pattern</li>
+        </ul>
+        <div class="spotlight next" style="
+            --spotlight-radius: 0;
+            --spotlight-opacity: 40%;
+            --spotlight-width: 1024px;
+            --spotlight-height: 50px;
+            --spotlight-top: 105px;
         "></div>
     </section>
 
@@ -308,9 +296,57 @@
     </section>
 
     <section class="slide">
-        <h2 class="shout">What's this all about?</h2>
+        <h2 class="shout">Have input with no label</h2>
     </section>
 
+    <section class="slide">
+        <h2>Label</h2>
+        <pre>
+            <code>&lt;label for="<mark>email</mark>"&gt;Email&lt;/label&gt;</code>
+            <code>&lt;input id="<mark>email</mark>"&gt;</code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <h2>Label</h2>
+        <pre>
+            <code>&lt;label&gt;</code>
+            <code class="mark">    &lt;span&gt;Email&lt;/span&gt;</code>
+            <code>    &lt;input&gt;</code>
+            <code>&lt;/label&gt;</code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <h2>Label as title</h2>
+        <pre>
+            <code>&lt;input <mark>title="Email"</mark>&gt;</code>
+        </pre>
+        <blockquote class="note">This will show a tooltip on hover</blockquote>
+    </section>
+
+    <section class="slide">
+        <h2>Invisible label</h2>
+        <pre>
+            <code>&lt;input <mark>aria-label="Email"</mark>&gt;</code>
+        </pre>
+        <blockquote class="note">
+            Read more about
+            <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA" target="_blank">ARIA</a>
+        </blockquote>
+    </section>
+
+    <section class="slide">
+        <h2>Same for button</h2>
+        <pre class="next">
+            <code>&lt;button <mark>title="Submit"</mark>&gt;&lt;/button&gt;</code>
+            <code>&lt;button <mark>aria-label="Submit"</mark>&gt;&lt;/button&gt;</code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout">What's this all about?</h2>
+    </section>
 
     <section class="slide">
         <h2>User experience is in Your hands</h2>
@@ -328,13 +364,13 @@
             <li>Use <strong>&lt;form&gt;</strong> when possible</li>
             <li>Follow accessibility and semantic rules</li>
             <li>Check libraries in your projects</li>
-            <li>Do not be afraid to override default styles</li>
+            <li>Do not be afraid to work with defaults</li>
             <li>Validate everything</li>
             <li>Check your form with keyboard</li>
         </ol>
     </section>
 
-    <section class="slide" id="final">
+    <section class="slide">
         <h2>Thank you!</h2>
         <img src="pictures/repo.png" alt="GitHub Repository" width="256">
         <p class="subtitle">@vchychuzhko</p>
@@ -387,15 +423,22 @@
             });
         });
 
-        const validationTriggers = document.querySelectorAll('[data-validation-trigger]');
+        const validationTrigger = document.querySelector('[data-validation-trigger]');
 
-        validationTriggers.forEach((validationTrigger) => {
-            validationTrigger.addEventListener('change', (event) => {
-                const formName = event.target.dataset.validationTrigger;
-                const form = document.forms[formName];
+        validationTrigger.addEventListener('change', (event) => {
+            const formName = event.target.dataset.validationTrigger;
+            const form = document.forms[formName];
 
-                form.classList.toggle('validate', event.target.checked);
-            });
+            form.classList.toggle('validate', event.target.checked);
+        });
+
+        const typeTrigger = document.querySelector('[data-type-trigger]');
+
+        typeTrigger.addEventListener('change', (event) => {
+            const formName = event.target.dataset.typeTrigger;
+            const form = document.forms[formName];
+
+            form.email.type = event.target.checked ? 'email' : 'text';
         });
     </script>
 </body>
